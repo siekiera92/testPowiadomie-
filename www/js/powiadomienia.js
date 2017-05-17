@@ -25,13 +25,7 @@ function checkStation(){
 	return asd;
 }
 
-function wykonajPomiar(){
-	$.getJSON( "http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/"+localStorage.getItem("stacja"), function( stan3 ) {
-				pomiarPowiadomienie = stan3.stIndexLevel.indexLevelName;
-				localStorage.setItem("pomiar", pomiarPowiadomienie);
-				return pomiarPowiadomienie;			
-			});
-}
+
 function ustawPowiadomienie(){
 	interwal = checkRadio();
 	pozwolenie = checkSlider();
@@ -46,7 +40,16 @@ function ustawPowiadomienie(){
 		powiadomienia()
 	}
 }
-//document.getElementById('test2').innerHTML = localStorage.getItem("interwal");
+
+function wykonajPomiar(){
+	$.getJSON( "http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/"+localStorage.getItem("stacja"), function( stan3 ) {
+				pomiarPowiadomienie = stan3.stIndexLevel.indexLevelName;
+				localStorage.setItem("pomiar", pomiarPowiadomienie);
+				document.getElementById('test6').innerHTML = localStorage.getItem("pomiar");
+				return pomiarPowiadomienie;			
+			});
+}
+
 
 
 
