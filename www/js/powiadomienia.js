@@ -46,7 +46,7 @@ function wykonajPomiar(){
 				pomiarPowiadomienie = stan3.stIndexLevel.indexLevelName;
 				localStorage.setItem("pomiar", pomiarPowiadomienie);
 				document.getElementById('test6').innerHTML = localStorage.getItem("pomiar");
-				return pomiarPowiadomienie;			
+				return localStorage.getItem("pomiar");			
 			});
 }
 
@@ -62,6 +62,6 @@ function powiadomienia(){
 	  sound: null,
 	  every: localStorage.getItem("interwal"), //, "hour", "week", "month", "year"
 	  autoClear: false,
-	  at: new Date(new Date().getTime() + 10*1000)
+	  at: new Date(new Date().getTime() + 5*1000)
 	});
 }
