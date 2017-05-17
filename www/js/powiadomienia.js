@@ -18,27 +18,31 @@ function checkSlider(){
 	var asd = document.getElementById('slider2').options[document.getElementById('slider2').selectedIndex].value
 	return asd;
 }
-/*
-function checkSlider(){
-	if(document.getElementById('slider2').options[0].selected = 'selected';) {
-  		document.getElementById('test3').innerHTML = "Nie ma zgody";
-  		var pozwolenie = "0";
-  		return pozwolenie;
-	}else if(document.getElementById('slider2').options[1].selected = 'selected';) {
-  		document.getElementById('test3').innerHTML = "Jest zgoda";
-  		var pozwolenie = "1";
-  		return pozwolenie;
-  	}
+
+function checkStation(){
+	var asd = document.getElementById('stationChoice').options[document.getElementById('stationChoice').selectedIndex].value
+	return asd;
 }
-*/
+
+function wykonajPomiar(){
+	$.getJSON( "http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/"+localStorage.getItem("stacja"), function( stan3 ) {
+				pomiarPowiadomienie = stan3.stIndexLevel.indexLevelName;
+				localStorage.setItem("pomiar", pomiarPowiadomienie);
+				return pomiarPowiadomienie;			
+			});
+}
 function ustawPowiadomienie(){
 	interwal = checkRadio();
 	pozwolenie = checkSlider();
+	stacja= checkStation();
+	localStorage.setItem("stacja", stacja);
 	localStorage.setItem("pozwolenie", pozwolenie);
 	localStorage.setItem("interwal", interwal);
 	document.getElementById('test2').innerHTML = localStorage.getItem("interwal");
 	document.getElementById('test4').innerHTML = localStorage.getItem("pozwolenie");
-	powiadomienia()
+	if (localStorage.getItem("pozwolenie") == "on") {
+		powiadomienia()
+	}
 }
 //document.getElementById('test2').innerHTML = localStorage.getItem("interwal");
 
@@ -49,7 +53,7 @@ function powiadomienia(){
 	cordova.plugins.notification.local.schedule({
 	  id: 1,
 	  title: 'Testowe powiadomienie',
-	  text: 'Tu będą wskazania jakości powietzra jak już ogarnę jak dobrze robić powiadomienia',
+	  text: 'Stan jakości powietrza na stacji:' + wykonajPomiar(),
 	  sound: null,
 	  every: localStorage.getItem("interwal"), //, "hour", "week", "month", "year"
 	  autoClear: false,
