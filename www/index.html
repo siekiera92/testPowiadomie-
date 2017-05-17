@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+
+		<script type="text/javascript" src="cordova.js"></script>
+		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+		<link rel="stylesheet" href="css/themes/my-first-theme.css" />
+		<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+		<script src="js/jquery-2.1.4.min.js"></script>
+		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+	</head>
+
+	<body onload="init()">
+	
+		<!-- Strona główna na której wyświetlana jest lista ze stacjami pomiarowymi na terenie krakowskowa -->
+		
+		<div data-role="page" id="pageone">
+			<div data-role="panel" id="myPanel" data-display="overlay">
+				<h2>Menu</h2>
+				<ul data-role="listview" id="sortedList">
+					<li><a href="#pageone" class="ui-btn ui-btn-inline">Lista stacji pomiarowych</a></li>
+					<li><a href="#gps" class="ui-btn ui-btn-inline">Lokalizacja stacji</a></li>
+					<li><a href="#mpk" onclick="mpkFree()" class="ui-btn ui-btn-inline">Darmowa komunikacja miejska</a></li>
+					<li><a href="#powiadomieniaAndroid" data-rel="close" class="ui-btn ui-btn-inline">Powiadomienia</a></li>
+				</ul>
+			</div>
+			<div data-role="header" data-position="fixed">
+				<a href="#myPanel" class="ui-btn ui-btn-inline">Menu</a>
+				<h1>Lista stacji pomiarowych</h1>
+			</div>
+			<div data-role="main" class="ui-content">
+				<a href="#stationDane" id="station1Btn" onclick="station1dane()" class="ui-btn ui-btn-inline">
+					<p id="station1Name">Nazwa stacji:</p>
+					<p id="station1Adress">Adres:</p>
+					<p>Stan jakości powietrza: <strong  id="station1Stan"></strong></p>
+				</a>
+				<a href="#stationDane" id="station2Btn" onclick="station2dane()" class="ui-btn ui-btn-inline">
+					<p id="station2Name">Nazwa stacji:</p>
+					<p id="station2Adress">Adres:</p>
+					<p>Stan jakości powietrza: <strong  id="station2Stan"></strong></p>
+				</a>
+				<a href="#stationDane" id="station3Btn" onclick="station3dane()" class="ui-btn ui-btn-inline">
+					<p id="station3Name">Nazwa stacji:</p>
+					<p id="station3Adress">Adres:</p>
+					<p>Stan jakości powietrza: <strong  id="station3Stan"></strong></p>
+				</a>
+				<a href="#stationDane" id="station4Btn" onclick="station4dane()" class="ui-btn ui-btn-inline">
+					<p id="station4Name">Nazwa stacji:</p>
+					<p id="station4Adress">Adres:</p>
+					<p>Stan jakości powietrza: <strong  id="station4Stan"></strong></p>
+				</a>
+				<a href="#stationDane" id="station5Btn" onclick="station5dane()" class="ui-btn ui-btn-inline">
+					<p id="station5Name">Nazwa stacji:</p>
+					<p id="station5Adress">Adres:</p>
+					<p>Stan jakości powietrza: <strong  id="station5Stan"></strong></p>
+				</a>
+				<a href="#stationDane" id="station6Btn" onclick="station6dane()" class="ui-btn ui-btn-inline">
+					<p id="station6Name">Nazwa stacji:</p>
+					<p id="station6Adress">Adres:</p>
+					<p>Stan jakości powietrza: <strong  id="station6Stan"></strong></p>
+				</a>
+				<a href="#stationDane" id="station7Btn" onclick="station7dane()" class="ui-btn ui-btn-inline">
+					<p id="station7Name">Nazwa stacji:</p>
+					<p id="station7Adress">Adres:</p>
+					<p>Stan jakości powietrza: <strong  id="station7Stan"></strong></p>
+				</a>
+				<a href="#stationDane" id="station8Btn" onclick="station8dane()" class="ui-btn ui-btn-inline">
+					<p id="station8Name">Nazwa stacji:</p>
+					<p id="station8Adress">Adres:</p>
+					<p>Stan jakości powietrza: <strong  id="station8Stan"></strong></p>
+				</a>
+			</div>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h1>AntySMOG Ltd.</h1>
+			</div> 
+		</div>
+		
+		<!-- Strona z lokalizacją gps i mapami google -->
+		
+		<div data-role="page" id="gps">
+			<div data-role="header" data-position="fixed">
+				<h1>AntySMOG</h1>
+			</div>
+			<div data-role="main" class="ui-content">
+				<iframe id="map" style="width:100%;height:300px;" alt="Google map"></iframe>
+				<input type="button" onclick="stationsAndMeOnMap()" value="Stacje i ja"/>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h1>AntySMOG Ltd.</h1>
+			</div> 
+		</div> 
+		
+		<!-- Strona z  wysyłaniem sms -->
+		
+		<div data-role="page" id="powiadomienia">
+			<div data-role="header" data-position="fixed">
+				<h1 id="stationNameHP">AntySMOG</h1>
+			</div>
+			<div data-role="main" class="ui-content">
+				<form id="sending">
+					<input id="numberTxt" placeholder="Wprowadź numer" value="" type="tel" />
+					<textarea id="messageTxt"></textarea>
+					<input type="button" onclick="smsapp.sendSms()" value="Wyślij" />
+				</form>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h1>AntySMOG Ltd.</h1>
+			</div> 
+		</div>
+
+		<!-- Strona z informacją o drmowym mpk -->
+		
+		<div data-role="page" id="mpk">
+			<div data-role="header" data-position="fixed">
+				<h1>AntySMOG</h1>
+				<a href="#powiadomienia" class="ui-btn ui-icon-comment ui-btn-icon-left">Prześlij znajomemu</a>
+			</div>
+			<div data-role="main" class="ui-content">
+				<p id="q1" style="display:none">błąd</p>
+				<p id="q2" style="display:none">błąd</p>
+				<p id="q3" style="display:none">błąd</p>
+				<p id="q4" style="display:none">błąd</p>
+				<p id="q5" style="display:none">błąd</p>
+				<p id="q6" style="display:none">błąd</p>
+				<p id="q7" style="display:none">błąd</p>
+				<p id="q8" style="display:none">błąd</p>
+				<p id="data9" style="display:none">błąd</p>
+				<div id="informacjaMPK"></div>
+				<p id="srednia1Jest"></p>
+				<p id="srednia2Jest"></p>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h1>AntySMOG Ltd.</h1>
+			</div> 
+		</div>
+
+		<!-- Strona z  powiadomieniami android -->
+		
+		<div data-role="page" id="powiadomieniaAndroid">
+			<div data-role="header" data-position="fixed">
+				<h1 id="stationNameHP">Ustawienia Powiadomień</h1>
+			</div>
+			<div data-role="main" class="ui-content">
+			<a href="#" onclick="powiadomienia()" class="ui-btn ui-btn-inline">Włącz</a>
+				<label for="slider2">Włączyć powiadomienia:</label>
+				<select name="slider2" id="slider2" data-role="slider">
+				    <option value="off">Nie</option>
+				    <option value="on">Tak</option>
+				</select>
+				<fieldset data-role="controlgroup">
+			    <legend>Wyświetlanie powiadomień:</legend>
+			        <input type="radio" name="radio-choice-1" id="radio-choice-1" value="choice-1" checked="checked">
+			        <label for="radio-choice-1">Co 1 godzinę</label>
+			        <input type="radio" name="radio-choice-1" id="radio-choice-2" value="choice-2">
+			        <label for="radio-choice-2">Co 24 godziny</label>
+			        <input type="radio" name="radio-choice-1" id="radio-choice-3" value="choice-3">
+			        <label for="radio-choice-3">Co 30 sekund</label>									<!-- Opcja stwożona aby zaprezentować funkcjonalność  -->
+			        <input type="radio" name="radio-choice-1" id="radio-choice-4" value="choice-4">
+			        <label for="radio-choice-4">Co 10 sekund</label>									<!-- Opcja stwożona aby zaprezentować funkcjonalność  -->
+				</fieldset>
+
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h1>AntySMOG Ltd.</h1>
+			</div> 
+		</div>
+
+<!-- =============================================================== -->
+<!-- Podstrony dla poszczegulnych stacji pomiarowych -->
+<!-- =============================================================== -->
+
+
+		<div data-role="page" id="stationDane">
+			<div data-role="header" data-position="fixed">
+				<h1 id="stationNameH">AntySMOG</h1>
+				<a href="#powiadomienia" class="ui-btn ui-icon-comment ui-btn-icon-left">Prześlij znajomemu</a>
+			</div>
+			<div data-role="main" class="ui-content">
+				<h2 id="pzPM10">Pył zawieszony PM10:</h2>
+				<ul data-role="listview">
+			      <li><a href="#">Wartość pomiaru: <strong id="stationPM10">-</strong></a></li>
+			      <li><a href="#">Data pomiaru: <strong id="stationPM10Date">-</strong></a></li>
+			      <li><a href="#">Norma: <strong id="stationPM10Norm">-</strong>%</a></li>
+			      <li><a href="#">Stan powietrza: <strong id="stationPM10Stan">-</strong></a></li>
+			    </ul>
+			    <h2 id="daNO2">Dwutlenek azotu NO2:</h2>
+				<ul data-role="listview">
+			      <li><a href="#">Wartość pomiaru: <strong id="stationNO2">-</strong></a></li>
+			      <li><a href="#">Data pomiaru: <strong id="stationNO2Date">-</strong></a></li>
+			      <li><a href="#">Norma: <strong id="stationNO2Norm">-</strong>%</a></li>
+			      <li><a href="#">Stan powietrza: <strong id="stationNO2Stan">-</strong></a></li>
+			    </ul>
+			    <h2 id="twCO">Tlenek węgla CO:</h2>
+				<ul data-role="listview">
+			      <li><a href="#">Wartość pomiaru: <strong id="stationCO">-</strong></a></li>
+			      <li><a href="#">Data pomiaru: <strong id="stationCODate">-</strong></a></li>
+			      <li><a href="#">Norma: <strong id="stationCONorm">-</strong>%</a></li>
+			      <li><a href="#">Stan powietrza: <strong id="stationCOStan">-</strong></a></li>
+			    </ul>
+			    <h2 id="bC6H6">Benzen C6H6:</h2>
+				<ul data-role="listview">
+			      <li><a href="#">Wartość pomiaru: <strong id="stationBenzen">-</strong></a></li>
+			      <li><a href="#">Data pomiaru: <strong id="stationBenzenDate">-</strong></a></li>
+			      <li><a href="#">Norma: <strong id="stationBenzenNorm">-</strong>%</a></li>
+			      <li><a href="#">Stan powietrza: <strong id="stationBenzenStan">-</strong></a></li>
+			    </ul>
+			    <h2 id="pzPM25">pył zawieszony PM2.5:</h2>
+				<ul data-role="listview">
+			      <li><a href="#">Wartość pomiaru: <strong id="stationPM25">-</strong></a></li>
+			      <li><a href="#">Data pomiaru: <strong id="stationPM25Date">-</strong></a></li>
+			      <li><a href="#">Norma: <strong id="stationPM25Norm">-</strong>%</a></li>
+			      <li><a href="#">Stan powietrza: <strong id="stationPM25Stan">-</strong></a></li>
+			    </ul>
+			    <h2 id="dsSO2">Dwutlenek siarki SO2:</h2>
+				<ul data-role="listview">
+			      <li><a href="#">Wartość pomiaru: <strong id="stationSO2">-</strong></a></li>
+			      <li><a href="#">Data pomiaru: <strong id="stationSO2Date">-</strong></a></li>
+			      <li><a href="#">Norma: <strong id="stationSO2Norm">-</strong>%</a></li>
+			      <li><a href="#">Stan powietrza: <strong id="stationSO2Stan">-</strong></a></li>
+			    </ul>
+			    <h2 id="oO3">Ozon O3:</h2>
+				<ul data-role="listview">
+			      <li><a href="#">Wartość pomiaru: <strong id="stationO3">-</strong></a></li>
+			      <li><a href="#">Data pomiaru: <strong id="stationO3Date">-</strong></a></li>
+			      <li><a href="#">Norma: <strong id="stationO3Norm">-</strong>%</a></li>
+			      <li><a href="#">Stan powietrza: <strong id="stationO3Stan">-</strong></a></li>
+			    </ul>
+			</div>
+			<div data-role="footer" data-position="fixed">
+				<h1>AntySMOG Ltd.</h1>
+			</div> 
+		</div>
+		<script src="js/ajaxload.js"></script>
+		<script src="js/pgb.js"></script>
+		<script src="js/smsapp.js"></script>
+		<script src="js/powiadomienia.js"></script>
+	</body>
+</html>
