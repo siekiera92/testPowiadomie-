@@ -145,23 +145,27 @@
 			</div>
 			<div data-role="main" class="ui-content">
 			<a href="#" onclick="powiadomienia()" class="ui-btn ui-btn-inline">Włącz</a>
+
 				<label for="slider2">Włączyć powiadomienia:</label>
 				<select name="slider2" id="slider2" data-role="slider">
 				    <option value="off">Nie</option>
 				    <option value="on">Tak</option>
 				</select>
+
 				<fieldset data-role="controlgroup">
 			    <legend>Wyświetlanie powiadomień:</legend>
-			        <input type="radio" name="radio-choice-1" id="radio-choice-1" value="choice-1" checked="checked">
-			        <label for="radio-choice-1">Co 1 godzinę</label>
-			        <input type="radio" name="radio-choice-1" id="radio-choice-2" value="choice-2">
-			        <label for="radio-choice-2">Co 24 godziny</label>
-			        <input type="radio" name="radio-choice-1" id="radio-choice-3" value="choice-3">
-			        <label for="radio-choice-3" onclick="ustawCzas()">Co 1 minuta</label>									<!-- Opcja stwożona aby zaprezentować funkcjonalność  -->
-			        <input type="radio" name="radio-choice-1" id="radio-choice-4" value="choice-4">
-			        <label for="radio-choice-4">Co 10 sekund</label>									<!-- Opcja stwożona aby zaprezentować funkcjonalność  -->
+			        <input type="radio" name="powiadomieniaUstawCzas" id="1godzina" value="choice1" checked="checked">
+			        <label for="1godzina">Co 1 godzinę</label>
+			        <input type="radio" name="powiadomieniaUstawCzas" id="24godziny" value="choice2">
+			        <label for="24godziny">Co 24 godziny</label>
+			        <input type="radio" name="powiadomieniaUstawCzas" id="1minuta" value="choice3">
+			        <label for="1minuta">Co 1 minuta</label>									<!-- Opcja stwożona aby zaprezentować funkcjonalność  -->
 				</fieldset>
 				<p id="test1"></p>
+				<p id="test2"></p>
+				<p id="test3"></p>
+				<p id="test4"></p>
+				<a href="#" onclick="ustawPowiadomienie()" class="ui-btn ui-btn-inline">Zapisz zmiany</a>
 
 			</div>
 			<div data-role="footer" data-position="fixed">
