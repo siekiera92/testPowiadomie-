@@ -46,8 +46,9 @@ function wykonajPomiar(){
 				pomiarPowiadomienie = stan3.stIndexLevel.indexLevelName;
 				localStorage.setItem("pomiar", pomiarPowiadomienie);
 				document.getElementById('test6').innerHTML = localStorage.getItem("pomiar");
-				return localStorage.getItem("pomiar");			
+							
 			});
+	return localStorage.getItem("pomiar");
 }
 
 
