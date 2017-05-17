@@ -20,7 +20,9 @@ function checkSlider(){
 }
 
 function checkStation(){
-	var asd = document.getElementById('stationChoice').options[document.getElementById('stationChoice').selectedIndex].value
+	var asd = document.getElementById('stationChoice').options[document.getElementById('stationChoice').selectedIndex].value;
+	var qwerty = document.getElementById('stationChoice').options[document.getElementById('stationChoice').selectedIndex].innerHTML;
+	localStorage.setItem("nazwaStacji", qwerty);
 	document.getElementById('test5').innerHTML = asd;
 	return asd;
 }
@@ -52,13 +54,13 @@ function wykonajPomiar(){
 }
 
 
-document.getElementById('test7').innerHTML = wykonajPomiar();
+document.getElementById('test7').innerHTML = localStorage.getItem("nazwaStacji");
 
 
 function powiadomienia(){
 	cordova.plugins.notification.local.schedule({
 	  id: 1,
-	  title: 'Testowe powiadomienie',
+	  title: localStorage.getItem("nazwaStacji"),
 	  text: 'Stan jakości powietrza na stacji:' + wykonajPomiar(),
 	  sound: null,
 	  every: localStorage.getItem("interwal"), //, "hour", "week", "month", "year"
