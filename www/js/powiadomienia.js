@@ -21,6 +21,7 @@ function checkSlider(){
 
 function checkStation(){
 	var asd = document.getElementById('stationChoice').options[document.getElementById('stationChoice').selectedIndex].value
+	document.getElementById('test5').innerHTML = asd;
 	return asd;
 }
 

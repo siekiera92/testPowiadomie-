@@ -19,8 +19,8 @@ $.ajax({
     	//Kraków, ul. Złoty Róg
     	if (data[x].id == 10123) {
 	    	document.getElementById('station1Name').innerHTML = data[x].stationName;
+	    	document.getElementById('optName1').innerHTML = data[x].stationName;
 	    	station1NameH = data[x].stationName;
-	    	optName1 = data[x].stationName;
     		document.getElementById('station1Adress').innerHTML = data[x].addressStreet;
 			$.getJSON( "http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/"+data[x].id, function( stan1 ) {
 				station1StanH = stan1.stIndexLevel.indexLevelName;
@@ -31,8 +31,8 @@ $.ajax({
 		//Kraków, ul. Dietla
 		if (data[x].id == 10121) {
 	    	document.getElementById('station2Name').innerHTML = data[x].stationName;
+	    	document.getElementById('optName2').innerHTML = data[x].stationName;
 	    	station2NameH = data[x].stationName;
-	    	optName2 = data[x].stationName;
     		document.getElementById('station2Adress').innerHTML = data[x].addressStreet;
 			$.getJSON( "http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/"+data[x].id, function( stan2 ) {
 				station2StanH = stan2.stIndexLevel.indexLevelName;
@@ -42,8 +42,8 @@ $.ajax({
 		//Kraków, Aleja Krasińskiego
 		if (data[x].id == 400) {
 	    	document.getElementById('station3Name').innerHTML = data[x].stationName;
+	    	document.getElementById('optName3').innerHTML = data[x].stationName;
 	    	station3NameH = data[x].stationName;
-	    	optName3 = data[x].stationName;
     		document.getElementById('station3Adress').innerHTML = data[x].addressStreet;
 			$.getJSON( "http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/"+data[x].id, function( stan3 ) {
 				station3StanH = stan3.stIndexLevel.indexLevelName;
@@ -53,8 +53,8 @@ $.ajax({
 		//Kraków, ul. Bulwarowa
 		if (data[x].id == 402) {
 	    	document.getElementById('station4Name').innerHTML = data[x].stationName;
+	    	document.getElementById('optName4').innerHTML = data[x].stationName;
 	    	station4NameH = data[x].stationName;
-	    	optName4 = data[x].stationName;
     		document.getElementById('station4Adress').innerHTML = data[x].addressStreet;
 			$.getJSON( "http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/"+data[x].id, function( stan4 ) {
 				station4StanH = stan4.stIndexLevel.indexLevelName;
@@ -64,8 +64,8 @@ $.ajax({
 		//Kraków, os. Wadów
 		if (data[x].id == 10447) {
 	    	document.getElementById('station5Name').innerHTML = data[x].stationName;
+	    	document.getElementById('optName5').innerHTML = data[x].stationName;
 	    	station5NameH = data[x].stationName;
-	    	optName5 = data[x].stationName;
     		document.getElementById('station5Adress').innerHTML = data[x].addressStreet;
 			$.getJSON( "http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/"+data[x].id, function( stan5 ) {
 				station5StanH = stan5.stIndexLevel.indexLevelName;
@@ -75,8 +75,8 @@ $.ajax({
 		//Kraków, os. Piastów
 		if (data[x].id == 10139) {
 	    	document.getElementById('station6Name').innerHTML = data[x].stationName;
+	    	document.getElementById('optName6').innerHTML = data[x].stationName;
 	    	station6NameH = data[x].stationName;
-	    	optName6 = data[x].stationName;
     		document.getElementById('station6Adress').innerHTML = data[x].addressStreet;
 			$.getJSON( "http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/"+data[x].id, function( stan6 ) {
 				station6StanH = stan6.stIndexLevel.indexLevelName;
@@ -86,8 +86,8 @@ $.ajax({
 		//Kraków, ul. Bujaka
 		if (data[x].id == 401) {
 	    	document.getElementById('station7Name').innerHTML = data[x].stationName;
+	    	document.getElementById('optName7').innerHTML = data[x].stationName;
 	    	station7NameH = data[x].stationName;
-	    	optName7 = data[x].stationName;
     		document.getElementById('station7Adress').innerHTML = data[x].addressStreet;
 			$.getJSON( "http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/"+data[x].id, function( stan7 ) {
 				station7StanH = stan7.stIndexLevel.indexLevelName;
@@ -97,8 +97,8 @@ $.ajax({
 		//Kraków, ul. Telimeny
 		if (data[x].id == 10435) {
 	    	document.getElementById('station8Name').innerHTML = data[x].stationName;
+	    	document.getElementById('optName8').innerHTML = data[x].stationName;
 	    	station8NameH = data[x].stationName;
-	    	optName8 = data[x].stationName;
     		document.getElementById('station8Adress').innerHTML = data[x].addressStreet;
 			$.getJSON( "http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/"+data[x].id, function( stan8 ) {
 				station8StanH = stan8.stIndexLevel.indexLevelName;
