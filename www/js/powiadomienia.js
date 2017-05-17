@@ -51,7 +51,7 @@ function wykonajPomiar(){
 }
 
 
-
+document.getElementById('test7').innerHTML = wykonajPomiar();
 
 
 function powiadomienia(){
