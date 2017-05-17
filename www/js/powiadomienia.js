@@ -1,3 +1,8 @@
+function ustawCzas(){
+	document.getElementById('test1').innerHTML = "1 minuta";
+}
+
+
 function powiadomienia(){
 	cordova.plugins.notification.local.schedule({
 	  id: 1,
