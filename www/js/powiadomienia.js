@@ -40,6 +40,7 @@ function ustawPowiadomienie(){
 	localStorage.setItem("pozwolenie", pozwolenie);
 	localStorage.setItem("interwal", interwal);
 	document.getElementById('test2').innerHTML = localStorage.getItem("interwal");
+	document.getElementById('test3').innerHTML = localStorage.getItem("stacja");
 	document.getElementById('test4').innerHTML = localStorage.getItem("pozwolenie");
 	if (localStorage.getItem("pozwolenie") == "on") {
 		powiadomienia()
